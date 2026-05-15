@@ -1,0 +1,42 @@
+package es.noa.rad.config;
+
+/**
+ * Global configuration constants for the Diametric Game Engine.
+ *
+ * <p>This class centralises every fixed parameter of the engine so that no
+ * magic numbers appear scattered across the codebase. All values are defined
+ * as {@code public static final} constants and the class cannot be
+ * instantiated.</p>
+ *
+ * <p>Phase 1 scope: window resolution, tile dimensions (2:1 diametric ratio)
+ * and target update / render rates.</p>
+ *
+ * @since Phase 1
+ */
+public final class GameConfig {
+
+    /** Window width in pixels. */
+    public static final int SCREEN_WIDTH = 800;
+
+    /** Window height in pixels. */
+    public static final int SCREEN_HEIGHT = 600;
+
+    /** Tile width in pixels (must be 2 * TILE_HEIGHT for 2:1 projection). */
+    public static final int TILE_WIDTH = 64;
+
+    /** Tile height in pixels. */
+    public static final int TILE_HEIGHT = 32;
+
+    /** Target frames per second (render rate). */
+    public static final int TARGET_FPS = 60;
+
+    /** Target updates per second (logic rate). */
+    public static final int TARGET_UPS = 60;
+
+    /** Window title. */
+    public static final String WINDOW_TITLE = "Diametric Game Engine";
+
+    private GameConfig() {
+        // Utility class, no instances allowed.
+    }
+}
