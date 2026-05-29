@@ -1,0 +1,234 @@
+{
+	"palette": [
+		{
+			"color": {
+				"index": "A",
+				"rgb": {
+					"red": 255,
+					"green": 0,
+					"Blue": 255,
+					"hex": "#FF00FF"
+				}
+			}
+		},
+		{
+			"color": {
+				"index": "B",
+				"rgb": {
+					"red": 145,
+					"green": 147,
+					"Blue": 149,
+					"hex": "#919395"
+				}
+			}
+		},
+		{
+			"color": {
+				"index": "C",
+				"rgb": {
+					"red": 138,
+					"green": 141,
+					"Blue": 141,
+					"hex": "#8A8D8D"
+				}
+			}
+		},
+		{
+			"color": {
+				"index": "D",
+				"rgb": {
+					"red": 80,
+					"green": 78,
+					"Blue": 79,
+					"hex": "#504E4F"
+				}
+			}
+		},
+		{
+			"color": {
+				"index": "E",
+				"rgb": {
+					"red": 129,
+					"green": 130,
+					"Blue": 132,
+					"hex": "#818284"
+				}
+			}
+		},
+		{
+			"color": {
+				"index": "F",
+				"rgb": {
+					"red": 164,
+					"green": 166,
+					"Blue": 167,
+					"hex": "#A4A6A7"
+				}
+			}
+		},
+		{
+			"color": {
+				"index": "G",
+				"rgb": {
+					"red": 144,
+					"green": 146,
+					"Blue": 148,
+					"hex": "#909294"
+				}
+			}
+		},
+		{
+			"color": {
+				"index": "H",
+				"rgb": {
+					"red": 104,
+					"green": 105,
+					"Blue": 108,
+					"hex": "#68696C"
+				}
+			}
+		}
+	],
+	"tiles": [
+		{
+			"name": "Floor",
+			"north": 0,
+			"east": 0,
+			"south": 0,
+			"west": 0,
+			"image": "./image/Floor.bmp",
+			"mask": "./mask/Floor.mask",
+			"obj": "./obj/Floor.obj"
+		},
+		{
+			"name": "Block",
+			"north": 1,
+			"east": 1,
+			"south": 1,
+			"west": 1,
+			"image": "./image/Block.bmp",
+			"mask": "./mask/Block.mask",
+			"obj": "./obj/Block.obj"
+		},
+		{
+			"name": "Double Ramp Southeast and Southwest",
+			"north": 1,
+			"east": 0,
+			"south": 0,
+			"west": 0,
+			"image": "./image/Double Ramp Southeast and Southwest.bmp",
+			"mask": "./mask/Double Ramp Southeast and Southwest.mask",
+			"obj": "./obj/Double Ramp Southeast and Southwest.obj"
+		},
+		{
+			"name": "Double Ramp Southwest and Northwest",
+			"north": 0,
+			"east": 1,
+			"south": 0,
+			"west": 0,
+			"image": "./image/Double Ramp Southwest and Northwest.bmp",
+			"mask": "./mask/Double Ramp Southwest and Northwest.mask",
+			"obj": "./obj/Double Ramp Southwest and Northwest.obj"
+		},
+		{
+			"name": "Double Ramp Northeast and Northwest",
+			"north": 0,
+			"east": 0,
+			"south": 1,
+			"west": 0,
+			"image": "./image/Double Ramp Northeast and Northwest.bmp",
+			"mask": "./mask/Double Ramp Northeast and Northwest.mask",
+			"obj": "./obj/Double Ramp Northeast and Northwest.obj"
+		},
+		{
+			"name": "Double Ramp Northeast and Southeast",
+			"north": 1,
+			"east": 0,
+			"south": 0,
+			"west": 1,
+			"image": "./image/Double Ramp Northeast and Southeast.bmp",
+			"mask": "./mask/Double Ramp Northeast and Southeast.mask",
+			"obj": "./obj/Double Ramp Northeast and Southeast.obj"
+		},
+		{
+			"name": "Ramp Southwest",
+			"north": 1,
+			"east": 1,
+			"south": 0,
+			"west": 0,
+			"image": "./image/Ramp Southwest.bmp",
+			"mask": "./mask/Ramp Southwest.mask",
+			"obj": "./obj/Ramp Southwest.obj"
+		},
+		{
+			"name": "Ramp Northeast",
+			"north": 0,
+			"east": 0,
+			"south": 1,
+			"west": 1,
+			"image": "./image/Ramp Northeast.bmp",
+			"mask": "./mask/Ramp Northeast.mask",
+			"obj": "./obj/Ramp Northeast.obj"
+		},
+		{
+			"name": "Ramp Southeast",
+			"north": 1,
+			"east": 0,
+			"south": 0,
+			"west": 1,
+			"image": "./image/Ramp Southeast.bmp",
+			"mask": "./mask/Ramp Southeast.mask",
+			"obj": "./obj/Ramp Southeast.obj"
+		},
+		{
+			"name": "Ramp Northwest",
+			"north": 0,
+			"east": 1,
+			"south": 1,
+			"west": 0,
+			"image": "./image/Ramp Northwest.bmp",
+			"mask": "./mask/Ramp Northwest.mask",
+			"obj": "./obj/Ramp Northwest.obj"
+		},
+		{
+			"name": "Concave West Slope",
+			"north": 1,
+			"east": 1,
+			"south": 1,
+			"west": 0,
+			"image": "./image/Concave West Slope.bmp",
+			"mask": "./mask/Concave West Slope.mask",
+			"obj": "./obj/Concave West Slope.obj"
+		},
+		{
+			"name": "Concave South Slope",
+			"north": 1,
+			"east": 1,
+			"south": 0,
+			"west": 1,
+			"image": "./image/Concave South Slope.bmp",
+			"mask": "./mask/Concave South Slope.mask",
+			"obj": "./obj/Concave South Slope.obj"
+		},
+		{
+			"name": "Concave East Slope",
+			"north": 1,
+			"east": 0,
+			"south": 1,
+			"west": 1,
+			"image": "./image/Concave East Slope.bmp",
+			"mask": "./mask/Concave East Slope.mask",
+			"obj": "./obj/Concave East Slope.obj"
+		},
+		{
+			"name": "Concave North Slope",
+			"north": 0,
+			"east": 1,
+			"south": 1,
+			"west": 1,
+			"image": "./image/Concave North Slope.bmp",
+			"mask": "./mask/Concave North Slope.mask",
+			"obj": "./obj/Concave North Slope.obj"
+		}
+	]
+}
