@@ -1,0 +1,61 @@
+{
+  "width": 10,
+  "depth": 10,
+  "length": 1,
+  "tileMap": [
+    {
+      "tile": {
+        "index": 0,
+        "material": "TileMaterial.GRASS",
+        "Shape": "TileShape.FLOOR"
+      }
+    },
+    {
+      "tile": {
+        "index": 1,
+        "material": "TileMaterial.STONE",
+        "Shape": "TileShape.BLOCK"
+      }
+    },
+    {
+      "tile": {
+        "index": 2,
+        "material": "TileMaterial.STONE",
+        "Shape": "TileShape.RAMP_SW"
+      }
+    },
+    {
+      "tile": {
+        "index": 3,
+        "material": "TileMaterial.STONE",
+        "Shape": "TileShape.RAMP_SE"
+      }
+    },
+    {
+      "tile": {
+        "index": 4,
+        "material": "TileMaterial.STONE",
+        "Shape": "TileShape.RAMP_NW"
+      }
+    },
+    {
+      "tile": {
+        "index": 5,
+        "material": "TileMaterial.STONE",
+        "Shape": "TileShape.RAMP_NE"
+      }
+    }
+  ],
+  "tileLayer": [
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 0, 0, 2, 2, 0, 0, 1, 0,
+    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
+    0, 1, 3, 0, 0, 0, 0, 4, 1, 0,
+    0, 1, 3, 0, 0, 0, 0, 4, 1, 0,
+    0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
+    0, 1, 0, 0, 5, 5, 0, 0, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+  ]
+}

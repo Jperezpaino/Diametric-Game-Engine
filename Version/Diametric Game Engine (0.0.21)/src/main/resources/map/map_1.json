@@ -1,0 +1,28 @@
+{
+  "width": 5,
+  "depth": 5,
+  "length": 1,
+  "tileMap": [
+    {
+      "tile": {
+        "index": 0,
+        "material": "TileMaterial.GRASS",
+        "Shape": "TileShape.FLOOR"
+      }
+    },
+    {
+      "tile": {
+        "index": 1,
+        "material": "TileMaterial.STONE",
+        "Shape": "TileShape.BLOCK"
+      }
+    }
+  ],
+  "tileLayer": [
+    0, 0, 0, 0, 0,
+    0, 1, 1, 1, 0,
+    0, 1, 0, 1, 0,
+    0, 1, 1, 1, 0,
+    0, 0, 0, 0, 0
+  ]
+}
