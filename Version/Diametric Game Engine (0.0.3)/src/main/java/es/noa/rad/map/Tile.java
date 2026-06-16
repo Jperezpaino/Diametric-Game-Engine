@@ -36,7 +36,7 @@ public final class Tile {
         this.elevation = elevation;
     }
 
-    public TileType getType()      { return type; }
+    public TileType getType() { return type; }
     public int      getElevation() { return elevation; }
 
     /** @return whether entities can walk over this tile. */

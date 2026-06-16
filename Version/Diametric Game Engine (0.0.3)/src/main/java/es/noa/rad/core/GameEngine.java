@@ -21,14 +21,14 @@ import es.noa.rad.render.GameRenderer;
  */
 public final class GameEngine {
 
-    private GameWindow    window;
-    private GameLoop      loop;
-    private GameRenderer  renderer;
+    private GameWindow window;
+    private GameLoop loop;
+    private GameRenderer renderer;
     private IsoProjection projection;
 
-    private TileMap    map;
-    private Player     player;
-    private Camera     camera;
+    private TileMap map;
+    private Player player;
+    private Camera camera;
     private InputState input;
 
     private GameState state = GameState.LOADING;
