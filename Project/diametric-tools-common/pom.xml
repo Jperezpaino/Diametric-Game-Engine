@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                        http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>es.noa.rad</groupId>
+    <artifactId>diametric-parent</artifactId>
+    <version>0.0.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>diametric-tools-common</artifactId>
+  <packaging>jar</packaging>
+  <name>Diametric Tools Common</name>
+  <description>
+    Shared utilities for the editor tools (Tile Builder, Structure Builder,
+    Map Builder): Swing window helpers, resource browser widgets and any
+    JSON glue that the editors need on top of the engine's own kernel. The
+    engine module never depends on this one — it is a one-way edge from
+    the editors towards the engine.
+  </description>
+
+  <dependencies>
+    <dependency>
+      <groupId>es.noa.rad</groupId>
+      <artifactId>diametric-engine</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}-${project.version}</finalName>
+  </build>
+
+</project>
