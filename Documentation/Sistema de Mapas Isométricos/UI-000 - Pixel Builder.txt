@@ -1,0 +1,708 @@
+# UI-004 - Pixel Builder
+
+## 1. Objetivo
+
+Pixel Builder es la herramienta responsable de la creación y gestión de recursos gráficos pixel art utilizados por el resto del sistema.
+
+Su finalidad es permitir crear, editar, agrupar y exportar imágenes isométricas reutilizables.
+
+Pixel Builder no define comportamiento del juego.
+No define materiales, colisiones, formas físicas ni lógica de navegación.
+
+Su responsabilidad es exclusivamente gráfica.
+
+Flujo general:
+
+```text
+Pixel Builder
+    ↓
+Genera imágenes / spritesheets / atlas
+    ↓
+Tile Builder
+    ↓
+Structure Builder
+    ↓
+Map Builder
+```
+
+---
+
+# 2. Conceptos principales
+
+## 2.1 Graphic Tile
+
+Una Graphic Tile es una imagen pixel art individual.
+
+Tamaño base:
+
+```text
+64 x 47 px
+```
+
+Distribución visual:
+
+```text
+Zona superior isométrica:
+64 x 31 px
+
+Zona inferior de altura:
+16 px
+```
+
+La zona editable completa es de 64 x 47 px.
+
+---
+
+## 2.2 Graphic Tile Group
+
+Un Graphic Tile Group es un conjunto de Graphic Tiles conectadas visualmente.
+
+Su objetivo es facilitar el dibujo de varias Tiles relacionadas al mismo tiempo.
+
+Ejemplos:
+
+* Casa pequeña.
+* Columna.
+* Escalera.
+* Tejado.
+* Muro.
+* Puerta grande.
+* Decoración compleja.
+
+Un Tile Group no representa todavía una Structure lógica del juego.
+
+---
+
+## 2.3 Palette
+
+Una Palette es un conjunto de colores compartidos.
+
+Objetivo:
+
+* Mantener consistencia visual.
+* Reutilizar colores.
+* Facilitar modificaciones globales.
+* Controlar colores usados.
+
+---
+
+# 3. Ventana Principal
+
+La aplicación tendrá una ventana principal con estilo clásico de Windows.
+
+Características:
+
+| Propiedad       | Valor         |
+| --------------- | ------------- |
+| Título          | Pixel Builder |
+| Tamaño mínimo   | 640 x 480     |
+| Redimensionable | Sí            |
+| Maximizable     | Sí            |
+| Minimizable     | Sí            |
+| Barra de estado | Sí            |
+
+Cuando no exista ningún fichero abierto se mostrará una pantalla inicial con:
+
+* Título de la aplicación.
+* Menú superior.
+* Imagen conceptual representativa.
+* Acceso a Nuevo y Abrir.
+
+---
+
+# 4. Menú Principal
+
+## Archivo / File
+
+```text
+New Pixel File        Ctrl + N
+Open Pixel File       Ctrl + O
+Save Pixel File       Ctrl + S
+Save As Pixel File
+Close                 Ctrl + W
+Exit                  Alt + F4
+```
+
+## Herramientas / Tools
+
+```text
+Palette Manager
+Export Manager
+Validate Resources
+```
+
+## Ayuda / Help
+
+```text
+About Pixel Builder   F1
+```
+
+---
+
+# 5. Pantalla de trabajo principal
+
+Después de crear o abrir un fichero, la ventana mostrará dos listados principales:
+
+```text
+┌──────────────────────────────────────────────────────────────┐
+│ Menu Bar                                                     │
+├──────────────────────────────────────────────────────────────┤
+│ Toolbar                                                      │
+├──────────────────────────────┬───────────────────────────────┤
+│ Graphic Tiles                │ Graphic Tile Groups           │
+│                              │                               │
+│ Lista de Tiles               │ Lista de Grupos               │
+│                              │                               │
+│ Toolbar de Tiles             │ Toolbar de Grupos             │
+├──────────────────────────────┴───────────────────────────────┤
+│ Status Bar                                                   │
+└──────────────────────────────────────────────────────────────┘
+```
+
+---
+
+# 6. Lista de Graphic Tiles
+
+Responsabilidad:
+
+Mostrar todas las Graphic Tiles existentes en el fichero actual.
+
+Cada Tile deberá mostrar:
+
+```text
+Name
+Preview
+Palette
+Status
+```
+
+Barra de herramientas:
+
+```text
+New
+Edit
+Delete
+Duplicate
+Export
+```
+
+## New
+
+Crea una nueva Graphic Tile.
+
+## Edit
+
+Abre el Tile Editor.
+
+## Delete
+
+Elimina la Tile seleccionada.
+
+Debe validar si la Tile está siendo utilizada por algún Tile Group.
+
+Si existen dependencias, se deberá mostrar confirmación.
+
+## Duplicate
+
+Crea una copia editable de la Tile seleccionada.
+
+## Export
+
+Exporta la Tile como imagen PNG individual.
+
+Ejemplo:
+
+```text
+grass.png
+stone_wall.png
+roof_left.png
+```
+
+---
+
+# 7. Lista de Graphic Tile Groups
+
+Responsabilidad:
+
+Mostrar todos los grupos gráficos existentes en el fichero actual.
+
+Cada grupo deberá mostrar:
+
+```text
+Name
+Preview
+Dimensions
+Visible Tiles
+Status
+```
+
+Barra de herramientas:
+
+```text
+New
+Edit
+Delete
+Duplicate
+Export
+```
+
+## New
+
+Crea un nuevo Tile Group.
+
+## Edit
+
+Abre el Tile Group Editor.
+
+## Delete
+
+Elimina el grupo seleccionado.
+
+No elimina automáticamente las Tiles que lo componen.
+
+## Duplicate
+
+Crea una copia del grupo.
+
+## Export
+
+Exporta:
+
+```text
+Atlas PNG
+Metadata file with positions
+```
+
+Ejemplo:
+
+```text
+small_house_atlas.png
+small_house_atlas.json
+```
+
+---
+
+# 8. Tile Editor
+
+## 8.1 Objetivo
+
+Permitir editar una Graphic Tile individual pixel a pixel.
+
+---
+
+## 8.2 Área de trabajo
+
+El área de trabajo representa una imagen de:
+
+```text
+64 x 47 px
+```
+
+Debe mostrar guías visuales para:
+
+```text
+Zona superior isométrica: 64 x 31 px
+Zona inferior de altura: 16 px
+```
+
+No se permitirá pintar fuera del área válida de la Tile.
+
+---
+
+## 8.3 Herramientas
+
+Herramientas mínimas:
+
+```text
+Pixel Pencil
+Line
+Rectangle
+Fill
+Color Picker
+Eraser
+Zoom In
+Zoom Out
+Horizontal Flip
+Vertical Flip
+Rectangular Selection
+Free Selection
+Copy
+Paste
+Undo
+Redo
+```
+
+Rango de zoom:
+
+```text
+0.25x
+0.5x
+1x
+2x
+4x
+8x
+10x
+```
+
+---
+
+## 8.4 Paletas
+
+El editor tendrá dos cajas de color.
+
+## Available Colors
+
+Colores disponibles en la paleta seleccionada.
+
+## Used Colors
+
+Colores realmente usados por la Tile actual.
+
+---
+
+## 8.5 Transparencia
+
+Debe existir soporte para color transparente.
+
+El fondo transparente deberá representarse visualmente mediante patrón de tablero.
+
+---
+
+## 8.6 Vista previa real
+
+El editor deberá mostrar una vista previa a tamaño real:
+
+```text
+64 x 47 px
+```
+
+Objetivo:
+
+* Validar proporciones.
+* Comprobar legibilidad.
+* Ver el resultado final sin zoom.
+
+---
+
+## 8.7 Guardar / Cancelar
+
+Botones:
+
+```text
+Save
+Cancel
+```
+
+Save aplica los cambios.
+
+Cancel descarta los cambios no guardados previa confirmación.
+
+---
+
+# 9. Tile Group Editor
+
+## 9.1 Objetivo
+
+Permitir crear y editar grupos de Tiles conectadas visualmente como una única composición isométrica.
+
+El usuario trabaja sobre un lienzo temporal.
+
+Al guardar, los cambios se distribuyen sobre las Tiles correspondientes.
+
+---
+
+## 9.2 Dimensiones del grupo
+
+El usuario podrá definir:
+
+```text
+Width  / X
+Depth  / Y
+Height / Z
+```
+
+Límites iniciales:
+
+```text
+Width:  1..5
+Depth:  1..5
+Height: 1..10
+```
+
+---
+
+## 9.3 Superficies visibles
+
+No todas las Tiles del volumen son editables.
+
+Sólo cuentan las superficies visibles desde la vista isométrica.
+
+Ejemplo:
+
+```text
+5 x 5 x 10
+```
+
+No representa 250 Tiles editables.
+
+Sólo se consideran:
+
+```text
+Top visible faces
+Left visible faces
+Right visible faces
+```
+
+Las Tiles ocultas por otras no se generan ni se editan.
+
+---
+
+## 9.4 Distribución general
+
+```text
+┌──────────────────────────────────────────────────────────────────────┐
+│ Tile Group Editor                                                    │
+├──────────────────────────────────────────────────────────────────────┤
+│ Toolbar                                                              │
+├───────────────┬──────────────────────────────┬───────────────────────┤
+│ Tile List     │ Working Canvas               │ Properties / Preview   │
+│               │                              │                       │
+│ Visible Tiles │ Isometric Group View         │ Group Properties       │
+│ Metadata      │                              │ Real Size Preview      │
+├───────────────┴──────────────────────────────┴───────────────────────┤
+│ Save                                        Cancel                   │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 9.5 Working Canvas
+
+El lienzo mostrará la proyección isométrica completa del grupo.
+
+Debe mostrar:
+
+```text
+Guía del grupo
+Límites visibles
+Superficies editables
+Dimensiones X/Y/Z
+```
+
+No se podrá pintar sobre superficies ocultas.
+
+---
+
+## 9.6 Tile List
+
+La lista de Tiles mostrará todas las Tiles visibles generadas por el grupo.
+
+Cada fila deberá mostrar:
+
+```text
+Tile Name
+Face
+Status
+Source Tile
+Modified
+```
+
+Ejemplo:
+
+```text
+Roof_NW       Top    Existing    roof_01    Modified
+Roof_NE       Top    Existing    roof_02    Unchanged
+Wall_Left     Left   New         -          Modified
+Wall_Right    Right  Existing    wall_04    Modified
+```
+
+---
+
+## 9.7 Acciones sobre Tiles del grupo
+
+Cada Tile visible permitirá:
+
+```text
+Edit
+Replace
+Duplicate
+Create New
+Remove
+```
+
+## Edit
+
+Permite editar la Tile temporalmente.
+
+## Replace
+
+Permite sustituir esa posición por otra Tile existente.
+
+## Duplicate
+
+Duplica la Tile para crear una variante.
+
+## Create New
+
+Crea una nueva Tile asociada a esa posición.
+
+## Remove
+
+Elimina la referencia actual.
+
+---
+
+## 9.8 Metadatos de Tiles nuevas
+
+Las Tiles nuevas deberán permitir editar:
+
+```text
+Name
+Id
+Description
+Palette
+Tags
+```
+
+---
+
+## 9.9 Guardado del Tile Group
+
+Al guardar, el sistema deberá:
+
+```text
+1. Detectar Tiles modificadas.
+2. Detectar Tiles nuevas.
+3. Detectar Tiles existentes modificadas.
+4. Preguntar para cada Tile existente modificada:
+   - Replace Original
+   - Create Duplicate
+5. Guardar Tiles nuevas.
+6. Actualizar referencias del Tile Group.
+7. Actualizar previews.
+```
+
+Las Tiles originales nunca deberán modificarse silenciosamente.
+
+---
+
+# 10. Exportación
+
+## Exportar Graphic Tile
+
+Genera una imagen PNG individual.
+
+```text
+tile_name.png
+```
+
+## Exportar Graphic Tile Group
+
+Genera:
+
+```text
+atlas.png
+positions.json
+```
+
+El fichero de posiciones deberá indicar, como mínimo:
+
+```text
+Tile Id
+Tile Name
+X position in atlas
+Y position in atlas
+Width
+Height
+```
+
+---
+
+# 11. Validaciones
+
+## Borrado de Tile
+
+Antes de borrar una Tile, el sistema deberá comprobar si está siendo utilizada por Tile Groups.
+
+Si existen dependencias, se debe mostrar advertencia.
+
+## Guardado de Tile Group
+
+No se permitirá guardar un Tile Group sin Tiles visibles.
+
+## Exportación
+
+No se permitirá exportar recursos incompletos.
+
+---
+
+# 12. Flujo de trabajo general
+
+```text
+Crear o abrir Pixel File
+        ↓
+Crear paleta
+        ↓
+Crear Graphic Tiles
+        ↓
+Crear Tile Groups
+        ↓
+Editar Tiles o Groups
+        ↓
+Exportar PNG / Atlas
+        ↓
+Usar imágenes en Tile Builder
+```
+
+---
+
+# 13. Futuras mejoras
+
+## F-001 Capas
+
+Capas dentro de una Tile o Tile Group.
+
+## F-002 Animaciones
+
+Soporte para sprites animados.
+
+## F-003 Onion Skin
+
+Vista de fotogramas anteriores y posteriores.
+
+## F-004 Simetría
+
+```text
+Horizontal
+Vertical
+Four Quadrants
+```
+
+## F-005 Variantes automáticas
+
+Generación de variaciones visuales.
+
+## F-006 Vistas alternativas
+
+Soporte para vistas no isométricas.
+
+## F-007 Herramientas avanzadas de paleta
+
+Reemplazo global de colores.
+
+## F-008 Exportación avanzada
+
+Formatos adicionales:
+
+```text
+PNG
+Spritesheet
+Atlas
+Metadata
+```
+
+## F-009 Integración directa con Tile Builder
+
+Permitir enviar imágenes exportadas directamente a Tile Builder.
+
+---
